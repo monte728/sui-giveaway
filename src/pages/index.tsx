@@ -118,14 +118,7 @@ export default function Home() {
     // setIsLoading(true);
   };
 
-  //
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading...</div>
-      </div>
-    );
-  } else if (
+  if (
     // if not connected wallet, let user connect wallet
     !currentWallet.isConnected ||
     currentWallet.connectionStatus !== "connected"
@@ -135,14 +128,19 @@ export default function Home() {
         <ConnectButton />
       </div>
     );
+  } else if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-white text-2xl">Loading...</div>
+      </div>
+    );
   }
-
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4 relative">
       <div className="absolute top-4 text-white text-2xl font-bold">
         On Devnet
       </div>
-      <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md pt-10">
         <div className="mb-6 flex items-center justify-between bg-gray-700 px-4 py-2 rounded-md">
           <button
             onClick={() => handleDisconnect()}

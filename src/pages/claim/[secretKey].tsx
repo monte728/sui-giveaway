@@ -179,7 +179,17 @@ export default function ClaimGift() {
     setIsLoading(false);
   }; // donotExist()
 
-  if (isLoading) {
+  if (
+    // if not connected wallet, let user connect wallet
+    !currentWallet.isConnected ||
+    currentWallet.connectionStatus !== "connected"
+  ) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <ConnectButton />
+      </div>
+    );
+  } else if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <div className="text-white text-2xl">Loading...</div>
@@ -191,16 +201,6 @@ export default function ClaimGift() {
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md">
           <div className="text-white text-xl">No gift available</div>
         </div>
-      </div>
-    );
-  } else if (
-    // if not connected wallet, let user connect wallet
-    !currentWallet.isConnected ||
-    currentWallet.connectionStatus !== "connected"
-  ) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <ConnectButton />
       </div>
     );
   }
