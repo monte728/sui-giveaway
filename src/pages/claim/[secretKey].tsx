@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
 import { fromHex, toHex } from "@mysten/sui/utils";
@@ -17,16 +15,6 @@ import { Transaction } from "@mysten/sui/transactions";
 import { withdrawGift } from "@/giveaway/giveaway/functions";
 import { useRouter } from "next/router";
 import axios from "axios";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export default function ClaimGift() {
   const currentWallet = useCurrentWallet();
@@ -47,7 +35,7 @@ export default function ClaimGift() {
   //     value: Balance<T>,
   // }
   // 紀錄Gift有的資訊
-  const [publicKey, setPublicKey] = useState<number[]>([]);
+  // const [publicKey, setPublicKey] = useState<number[]>([]);
   const [giftValue, setGiftValue] = useState<number>(0);
 
   // get gift info, set public key and gift value
@@ -55,7 +43,7 @@ export default function ClaimGift() {
     if (!secretKey) return;
     const keypair = Ed25519Keypair.fromSecretKey(secretKey as string);
     const publicKey = keypair.getPublicKey();
-    setPublicKey(Array.from(publicKey.toRawBytes()));
+    // setPublicKey(Array.from(publicKey.toRawBytes()));
 
     const getManager = async () => {
       try {
@@ -96,7 +84,7 @@ export default function ClaimGift() {
       }
     }; // getManager()
     getManager();
-  }, [secretKey, address]);
+  }, [secretKey, address, suiClient]);
 
   // claim button, withdrawGift
   const handleClaim = async () => {

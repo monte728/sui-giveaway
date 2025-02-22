@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
 // import { fromHex, toHex } from "@mysten/sui/utils";
@@ -16,15 +16,15 @@ import { createGift } from "@/giveaway/giveaway/functions";
 import { useRouter } from "next/router";
 import { GiftEvents } from "../components/GiftEvents";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export default function Home() {
   const currentWallet = useCurrentWallet();
@@ -48,12 +48,12 @@ export default function Home() {
         owner: address,
         coinType: "0x2::sui::SUI",
       });
-      let blanceInSui = (Number(balance.totalBalance) / 1e9).toFixed(9);
+      const blanceInSui = (Number(balance.totalBalance) / 1e9).toFixed(9);
       setSuiBalance(blanceInSui);
       setIsLoading(false);
     };
     fetchBalance();
-  }, [address]);
+  }, [address, suiClient]);
 
   // submit button: send sui to create a gift, and redirect to the next page
   const handleSubmit = async () => {

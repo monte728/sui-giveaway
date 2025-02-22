@@ -1,5 +1,5 @@
 import { useSuiClient } from "@mysten/dapp-kit";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { nameMapAtom } from "./atoms";
 
@@ -37,7 +37,7 @@ export function DisplayAddress({ address }: { address: string }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [address]);
+  }, [address, nameMap, suiClient]);
 
   let display = nameMap[address] || "None";
   if (display == "None")

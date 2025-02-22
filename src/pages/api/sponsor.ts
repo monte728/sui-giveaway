@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Transaction } from "@mysten/sui/transactions";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -46,17 +44,17 @@ export default async function handler(
   // }
 
   // 取得贊助商的錢包 Coin Data
-  let coinData = await suiClient.getCoins({
+  const coinData = await suiClient.getCoins({
     owner: sponsorAddress,
   });
-  let coins = coinData.data;
+  const coins = coinData.data;
 
   if (!coins) {
     throw new Error("Missing GAS");
   }
-  let coin = coins[0];
+  const coin = coins[0];
   // Gas Payment 物件
-  let payment = {
+  const payment = {
     digest: coin.digest,
     objectId: coin.coinObjectId,
     version: coin.version,
