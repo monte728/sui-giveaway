@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Transaction } from "@mysten/sui/transactions";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
 import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
-import { fromHex, toHex } from "@mysten/sui/utils";
+import { fromHex } from "@mysten/sui/utils";
 
 type Body = {
   rawTxBytesHex: string;

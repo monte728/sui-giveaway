@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { phantom } from "@/_framework/reified";
 import { WithdrawGiftEvent } from "@/giveaway/giveaway/structs";
 import { useSuiClient, useCurrentAccount } from "@mysten/dapp-kit";

@@ -1,4 +1,5 @@
-import Image from "next/image";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Geist, Geist_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
@@ -8,12 +9,12 @@ import {
   useCurrentWallet,
   useSuiClient,
   useDisconnectWallet,
-  useSignAndExecuteTransaction,
+  // useSignAndExecuteTransaction,
   useSignTransaction,
 } from "@mysten/dapp-kit";
 import "@mysten/dapp-kit/dist/index.css";
 import { Transaction } from "@mysten/sui/transactions";
-import { createGift, withdrawGift } from "@/giveaway/giveaway/functions";
+import { withdrawGift } from "@/giveaway/giveaway/functions";
 import { useRouter } from "next/router";
 import axios from "axios";
 
